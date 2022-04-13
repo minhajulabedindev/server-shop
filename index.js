@@ -49,6 +49,7 @@ async function run() {
     });
     // --------------------------------------------------------------
     //Add to card collection
+    //Add to card collection
     app.post("/card", async (req, res) => {
       const cursor = req.body;
       console.log(cursor, "this is ");
@@ -70,7 +71,6 @@ async function run() {
 
     app.delete("/card", async (req, res) => {
       const id = req.params.body;
-
       const result = await assToCardCollection.deleteMany(id);
       res.json(result);
     });
@@ -95,7 +95,6 @@ async function run() {
     //   res.json(result);
     // });
 
-    // ------------------------------------------------------------------------
     // Show details and dynamic route
     // app.get("/bmw/:id", async (req, res) => {
     //   const productDetail = await productCollection.findOne({ _id: req.params.id });
@@ -108,6 +107,11 @@ async function run() {
       const users = await saveUsersCollection.insertOne(req.body);
       console.log(users);
       res.json(users);
+    });
+    app.get("/users", async (req, res) => {
+      const cursor = saveUsersCollection.find({});
+      const result = await cursor.toArray();
+      res.send(result);
     });
     app.delete("/users/:id", async (req, res) => {
       const id = req.params.id;
