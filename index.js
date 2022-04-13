@@ -60,10 +60,18 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result);
     });
+
     app.get("/card/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: id };
       const result = await assToCardCollection.findOne(query);
+      res.json(result);
+    });
+
+    app.delete("/card", async (req, res) => {
+      const id = req.params.body;
+
+      const result = await assToCardCollection.deleteMany(id);
       res.json(result);
     });
     app.delete("/card/:id", async (req, res) => {
@@ -73,6 +81,19 @@ async function run() {
       const result = await assToCardCollection.deleteOne(query);
       res.json(result);
     });
+    // app.get("/card/:email", async (req, res) => {
+    //   const id = req.params.email;
+    //   const query = { _id: id };
+    //   const result = await assToCardCollection.find(query);
+    //   res.json(result);
+    // });
+    // app.delete("/card/:id", async (req, res) => {
+    //   const id = req.params.id;
+    //   const query = { email: id };
+    //   console.log(query);
+    //   const result = await assToCardCollection.deleteMany(query);
+    //   res.json(result);
+    // });
 
     // ------------------------------------------------------------------------
     // Show details and dynamic route
@@ -133,26 +154,6 @@ async function run() {
       }
       res.json({ admin: isAdmin });
     });
-    // //-------------------------------------------------
-    // app.get("/booking", async (req, res) => {
-    //   const cursor = bookingCollection.find({});
-    //   const result = await cursor.toArray();
-    //   res.send(result);
-    // });
-    // app.post("/booking", async (req, res) => {
-    //   const cursor = req.body;
-    //   const result = await bookingCollection.insertOne(cursor);
-    //   res.json(result);
-    // });
-    // //-------------- Delete Api ------------------
-
-    // app.delete("/booking/:id", async (req, res) => {
-    //   const id = req.params.id;
-    //   const query = { _id: id };
-    //   const result = await bookingCollection.deleteOne(query);
-    //   res.json(result);
-    // });
-    //single api
   } finally {
     // await client.close();
   }
