@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "16.15.1"
+  },
   "scripts": {
     "start": "nodemon index.js",
     "start-dev": "nodemon index.js",
@@ -19,8 +22,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.5",
     "nodemon": "^2.0.15",
-    "stripe": "^8.216.0",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "stripe": "^8.216.0"
   }
 }
