@@ -19,6 +19,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.5",
     "nodemon": "^2.0.15",
-    "stripe": "^8.216.0"
+    "stripe": "^8.216.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   }
 }

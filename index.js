@@ -35,9 +35,7 @@ async function run() {
     //post api
     app.post("/bmw", async (req, res) => {
       const cursor = req.body;
-      console.log(cursor, "this is ");
       const result = await offerCollection.insertOne(cursor);
-
       res.json(result);
     });
 
@@ -48,7 +46,7 @@ async function run() {
       res.json(result);
     });
     // --------------------------------------------------------------
-    //Add to card collection
+
     //Add to card collection
     app.post("/card", async (req, res) => {
       const cursor = req.body;
@@ -81,26 +79,6 @@ async function run() {
       const result = await assToCardCollection.deleteOne(query);
       res.json(result);
     });
-    // app.get("/card/:email", async (req, res) => {
-    //   const id = req.params.email;
-    //   const query = { _id: id };
-    //   const result = await assToCardCollection.find(query);
-    //   res.json(result);
-    // });
-    // app.delete("/card/:id", async (req, res) => {
-    //   const id = req.params.id;
-    //   const query = { email: id };
-    //   console.log(query);
-    //   const result = await assToCardCollection.deleteMany(query);
-    //   res.json(result);
-    // });
-
-    // Show details and dynamic route
-    // app.get("/bmw/:id", async (req, res) => {
-    //   const productDetail = await productCollection.findOne({ _id: req.params.id });
-    //   res.send(productDetail);
-    // });
-    //get single api
 
     //user collection
     app.post("/users", async (req, res) => {
